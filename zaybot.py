@@ -36,14 +36,14 @@ async def start(message: types.Message):
     is_sub = await check_sub(message.from_user.id)
     if is_sub:
         btn = InlineKeyboardMarkup(inline_keyboard=[
-            [InlineKeyboardButton(text="🌐 Saytni ochish", web_app=WebAppInfo(url=WEBSITE_URL))]
+            [InlineKeyboardButton(text="🌐 Nakrutka urish", web_app=WebAppInfo(url=WEBSITE_URL))]
         ])
-        await message.answer("Xush kelibsiz!", reply_markup=btn)
+        await message.answer("Assalomu alaykum. Xush kelibsiz!", reply_markup=btn)
     else:
         btn = InlineKeyboardMarkup(inline_keyboard=[
             [InlineKeyboardButton(text="🔹 Kanalga a'zo bo'lish", url=f"https://t.me/{CHANNELS[0][1:]}")],
             [InlineKeyboardButton(text="🎬 YouTube obuna", url=YOUTUBE_URL)],
-            [InlineKeyboardButton(text="✅ Tekshirish", callback_data="check")]
+            [InlineKeyboardButton(text="✅ Tekshirish 🫆", callback_data="check")]
         ])
         await message.answer("Avval kanallarga a'zo bo'ling:", reply_markup=btn)
 
@@ -53,9 +53,9 @@ async def check_callback(call: types.CallbackQuery):
     if is_sub:
         await call.message.delete()
         btn = InlineKeyboardMarkup(inline_keyboard=[
-            [InlineKeyboardButton(text="🌐 Saytni ochish", web_app=WebAppInfo(url=WEBSITE_URL))]
+            [InlineKeyboardButton(text="🌐 Nakrutka urish", web_app=WebAppInfo(url=WEBSITE_URL))]
         ])
-        await call.message.answer("Rahmat! Saytga kiring:", reply_markup=btn)
+        await call.message.answer("Rahmat! Mendan bemalol foydalanishingiz mumkin! 👀:", reply_markup=btn)
     else:
         await call.answer("❌ Obuna bo'lmadingiz!", show_alert=True)
 
